@@ -4,52 +4,110 @@
 
 :root {
     --cell-size: 100px;
-    --mark-size: calc(var(--cell-size) * .9);
+    --mark-size: calc(var(var(--cell-size)) * .8);
 }
- 
+
 body {
     margin: 0;
 }
 
 .board {
     width: 100vw;
-    height: 100vh;
+    height: 100vh);
     display: grid;
     justify-content: center;
     align-content: center;
-    justify-items: center;
-    align-items: center;
     grid-template-columns: repeat(3, auto);
+    justify-items: center;
+    align-items: center
 }
 
 .cell {
-    width: var(--cell-size); 
+    width: var(--cell-size);
     height: var(--cell-size);
     border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: cell; 
+}
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+}
+
+.cell:not(.x):not(.circle):hover {
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.cell.x::before,
+.cell.x::after {
+    content: '';
+    position: absolute;
+    width calc(var(--mark-size) * .2);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.x::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: (-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 60%;
+}
+
+.cell.circle::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.circle::after {
+    width: calc(var(--mark-size) * .75);
+    height: calc(var(--mark-size) * .75);
+    background-color: white;
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba (245, 40, 145, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 50px;
+    flex-direction: column;
+}
+
+.winning-message button {
+    font-size: 40px;
+    background-color: white;
+    border: 2px solid blue;
+    padding: 1px 2px;
     cursor: pointer;
 }
-/* Remove borders from all sides of grid */
-.cell:first-child,
-.cell:nth-child(2),
-.cell:nth-child(3) {
-    border-top: none;
+
+.winning-message button:hover {
+    background-color: black;
+    border-color: solid red;
+    color: white;
 }
 
-.cell:nth-child(3n + 1) {
-    border-left: none;
+.winning-message.show {
+    display: flex;
 }
-
-.cell:nth-child(3n + 3) {
-    border-right: none;
-} 
-
-.cell:last-child,
-.cell:nth-child(8),
-.cell:nth-child(7) {
-    border-bottom: none;
-}
-
