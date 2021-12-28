@@ -6,6 +6,7 @@
     --cell-size: 100px;
     --mark-size: calc(var(--cell-size) * .9);
 }
+ 
 body {
     margin: 0;
 }
@@ -31,7 +32,7 @@ body {
     position: relative;
     cursor: pointer;
 }
-
+/* Remove borders from all sides of grid */
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3) {
