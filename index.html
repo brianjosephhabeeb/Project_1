@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "style.css" media = "screen" />
+    <link rel = "stylesheet" type = "text/css" href = "style.css" media = "screen" /> <!--Links stylesheet to html-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brian's version of Tic-Tac-Toe</title>
+    <title>Brian's version of Tic-Tac-Toe</title><!---browser tab title-->
 </head>
 <body>
-    <h1>Tic-Tac-Toe</h1>
-    <h2 class = "player1"  class = "player2">Player 1 Player 2</h2>
-    <div class = "board" id = "board">
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-        <div class = "cell" data-cell ></div>
-    </div>
     <div>
-         <p>Tally Box</p>
+    <h1>Tic-Tac-Toe</h1><!--Game title in an h1 element-->
     </div>
-    <div class = "winning-message" id = "winningMessage">
-        <div data-winning-message-text></div>
-        <button id = "restartButton">Restart</button>
+    <div class = "board" id = "board"><!--Class of board to use in css and id of board for js-->
+        <div class = "cell" data-cell ></div> <!--9 cells for the board-->
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
+        <div class = "cell" data-cell ></div>
     </div>
- <script src= "script.js"></script>   
+    <div class = "winning-message" id = "winningMessage"><!--pop up message for win or draw at end of game-->
+        <h1 class = "win-text" data-winning-message-text></h1>
+    </div>
+    <button id = "restartButton">Restart</button> <!--Restart button-->
+ <script src= "script.js"></script> <!--linking script.js file to html-->
 </body>
 </html>

@@ -10,85 +10,114 @@ const eightWinningCombos = [
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8]
-]
+];
 const cellCharacter = document.querySelectorAll('[data-cell]');
+//grabbing all of the cells on the board//
 const board = document.getElementById('board');
-const winningMessageElement = document.getElementById('winningMessage')
-const winningMessageTextElement = document.querySelector('data-winning-message-text')
-const restartAction = document.getElementById('restartButton')
-let xTurn
+//grabbing the board element itself//
+const winningMessageElement = document.getElementById('winningMessage');
+//grabbing the winning message element//
+const winningMessageTextElement = document.querySelector('.win-text');
+//grabbing class of win-text that will be displayed at the end of the game
+const restartAction = document.getElementById('restartButton');
+let xTurn;
 
-gameStart()
+gameStart();
+//function to start with a clear board//
 
-restartAction.addEventListener('click', gameStart)
-
+restartAction.addEventListener('click', gameStart);
+//attaching an event listener to the restart button 
 function gameStart() {
-    xTurn = true
+    xTurn = true;
     cellCharacter.forEach(cell => {
-        cell.playerList.remove(player_1)
-        cell.playerList.remove(player_2)
-        cell.removeEventListener('click', onceClicked)
-        cell.addEventListener('click', onceClicked, { once: true })
+        //.forEach loops through each cell//
+        cell.classList.remove(player_1);
+        //clear board for beginning of new game//
+        cell.classList.remove(player_2);
+        //clear board for beginning of new game//
+        cell.removeEventListener('click', onceClicked);
+        cell.addEventListener('click', onceClicked, { once: true });
+        //this allows us to click cell once and only once//
   })   
-  getBoardHoverState() 
-  winningMessageElement.playerList.remove('show')
+  getBoardHoverState();
+  winningMessageTextElement.style.display = "none";
+  //stops winning message from displaying until gameover conditions are met//
 }
 
 
 
 
 function onceClicked(e) {
-  const cell = e.target
-  const currentPlayer = xTurn ? player_1 : player_2
-  placeChar(cell, currentPlayer)
+  const cell = e.target;
+  //targeting the cell that is clicked//
+  const currentPlayer = xTurn ? player_1 : player_2;
+  //says if it's xTurn use x if not use circle for current player//
+  placeChar(cell, currentPlayer);
+  //passing current cell and class//
   if (checkWin(currentPlayer)) {
-    gameOver(false)
+      //function to check for win//
+    gameOver(false);
+    //function to check for draw//
   } else if(ifDraw()) {
-      gameOver(true)
+      gameOver(true);
+      //gameOver is true because it is a draw//
   } else {
-    switchPlayer()
-    getBoardHoverState()  
+    switchPlayer();
+    //Else statement if neither draw or win has been met then switches player//
+    getBoardHoverState();
   }  
-}
+};
 
 function gameOver(draw) {
     if (draw) {
-        winningMessageTextElement.innerText = `It's a Draw!`
+        //function to call draw and show message it's a draw by using the winningMessageTextElement//
+        winningMessageTextElement.innerText = `It's a Draw!`;
     } else {
-    winningMessageTextElement.innerText = `${xTurn ? "O's" : "X's"} holds court!`
- }
- winningMessageTextElement.playerList.add('show')
-}
+    winningMessageTextElement.innerText = `${xTurn ? "X" : "O"} holds court!`;
+ }//Shows who's turn it is on the event of a win//
+ winningMessageTextElement.style.display = "block";
+};
 
 function ifDraw() {
-    //had to destructure cellCharacter because .every only works in this case as an ARRAY
+    //had to destructure cellCharacter because .every only works in this case as an ARRAY//
     return [...cellCharacter].every(cell => {
-        return cell.playerList.contains(player_) || cell.playerList.contains(player_2)
+        return cell.classList.contains(player_1) || cell.classList.contains(player_2);
+        //checking to see if every cell has a class of x or circle to return true for a draw//
     })
-} 
+};
 
 function placeChar(cell, currentPlayer) {
-    cell.playerList.add(currentPlayer)
-}
+    //adds the current players character//
+    cell.classList.add(currentPlayer);
+};
 
 function switchPlayer() {
-    xTurn = !xTurn
-}
+    //this changes the turn from player 1 to player 2 and then back and forth until game is over//
+    xTurn = !xTurn;
+};
+
 
 function getBoardHoverState() {
-    board.playerList.remove(player_1)
-    board.playerList.remove(player_2)
+    //using the different classes of hover state based upon whose turn it is//
+    board.classList.remove(player_1);
+    //this removes both classes of hover state//
+    board.classList.remove(player_2);
     if (xTurn) {
-        board.playerList.add(player_2)
+        board.classList.add(player_2);
     } else {
-        board.playerList.add(player_1)
+        board.classList.add(player_1);
+        //this is so we don't use what player it was but who is up//
     }
-}
+};
 
 function checkWin(currentPlayer) {
     return eightWinningCombos.some(combination => {
+        //Checking all winning combos to see if any are met by the current combination//
         return combination.every(index => {
-            return cellCharacter[index].playerList.contains(currentPlayer)
+            //will return true while every element has the same class if the winning conditions are met while looping over all combinations//
+            return cellCharacter[index].classList.contains(currentPlayer);
+            //checking classlist to see if it contains the current combo for a winning combo//
         })
     })
-}
+};
+
