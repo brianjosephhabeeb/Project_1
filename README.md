@@ -26,3 +26,14 @@ A game of tic-tac-toe with basic css styling and functional reset button to refr
 - As a user, I should be shown a message when I win, lose or tie
 - As a user, I should not be able to continue playing once I win, lose, or tie
 - As a user, I should be able to play the game again without refreshing the page
+
+## Unsolved Problems
+1. Much more CSS needed and a scoreboard to enhance user experience
+2. Adding sounds and color patterns for colorblind users to make the page more inclusive
+3. Formatting of page for look and cleanliness
+
+## Favorite Functions
+- cursor functionality when hovering over different elements and cells
+
+### Author
+- Brian Habeeb
