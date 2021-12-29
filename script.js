@@ -97,18 +97,7 @@ function switchPlayer() {
 };
 
 
-function getBoardHoverState() {
-    //using the different classes of hover state based upon whose turn it is//
-    board.classList.remove(player_1);
-    //this removes both classes of hover state//
-    board.classList.remove(player_2);
-    if (xTurn) {
-        board.classList.add(player_2);
-    } else {
-        board.classList.add(player_1);
-        //this is so we don't use what player it was but who is up//
-    }
-};
+
 
 function checkWin(currentPlayer) {
     return eightWinningCombos.some(combination => {
