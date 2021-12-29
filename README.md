@@ -1,10 +1,10 @@
-# Project_1
+# alt-h1 Project_1
 Tic-Tac-Toe
 
-## Description
+## alt-h2 Description:
 A game of tic-tac-toe with basic css styling and functional reset button to refresh the board. 
 
-## Links
+## alt-h2 Links to Research
 
 1. https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
 2. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
@@ -14,3 +14,8 @@ A game of tic-tac-toe with basic css styling and functional reset button to refr
 6. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
 
+## alt-h2 Technology Used:
+- HTML, CSS, and JavaScript
+
+## alt-h2 Tackling the problem
+- 
