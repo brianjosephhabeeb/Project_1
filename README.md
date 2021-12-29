@@ -18,7 +18,7 @@ A game of tic-tac-toe with basic css styling and functional reset button to refr
 - HTML, CSS, and JavaScript
 
 ## Tackling the problem
-- Wireframming, pseudocode, and class lectuares
+- Wireframming(analog white board), pseudocode, and class lectuares
 - I made an array of all winning combinations and then targeted those combinations using .forEach and then 
  .Every for the "cells" on the board to check for those combinations.
 - Basic CSS styling to help with user experience like hover state and shadowing of the cells were used.
